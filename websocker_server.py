@@ -43,6 +43,7 @@ async def counter(websocket, path):
             print(data)
             if data['user_type'] == 'host':
                 BOARD_CONTENT['content'] = data['content']
+                BOARD_CONTENT['cursor_position'] = data['cursor_position']
                 print(BOARD_CONTENT)
                 await notify_state()
             else:

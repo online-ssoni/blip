@@ -22,9 +22,13 @@ $(document).ready(()=>{
             setInterval(()=>{
                 currentEditorConent = editor.getValue()
                 console.log(editor.getValue())
+                editor.focus()
+                currentCursorPosition = editor.getCursor()
                 console.log('Data sent')
                     ws.send(JSON.stringify({'user_type': userType,
-                    'content' : currentEditorConent }))
+                    'content' : currentEditorConent,
+                    'cursor_position' : currentCursorPosition
+                    }));
                 
             },1000);
       }
@@ -53,12 +57,13 @@ $(document).ready(()=>{
 
             data = JSON.parse(event.data)
             try{
+                console.log(data);
                 let content = data['content']
                 console.log(content)
                 editor.getDoc().setValue(content);
-                // document.getElementsByClassName('codemirror-textarea')[0].value = content
-                // $('.codemirror-textarea')[0].val(content)
-                
+                editor.focus()
+                console.log(data['cursor_position']);
+                editor.setCursor(data['cursor_position'])    
             } catch(TypeError){
                 console.log("NOT LOADED")
             }
@@ -93,16 +98,4 @@ function runCode(script) {
 ws.onclose = (event)=>{
     alert('WEB SOCKET HAS GONE AWAY');
 }
-// var config = {
-//     apiKey: "AIzaSyADmGUdqp5x01ornjHp-xd5adYIeM9h508",
-//     authDomain: "realtimecodesharing.firebaseapp.com",
-//     databaseURL: "https://realtimecodesharing.firebaseio.com",
-//     projectId: "realtimecodesharing",
-//     storageBucket: "realtimecodesharing.appspot.com",
-//     messagingSenderId: "1043195952233"
-//   };
-// firebase.initializeApp(config);
-// dbRef.on('value', snap => console.log(snap.val()))
-
-// const dbRef = firebase.database().ref().child('hello');
 
