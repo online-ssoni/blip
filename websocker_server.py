@@ -34,13 +34,16 @@ async def unregister(websocket):
     await notify_participants()
 
 async def counter(websocket, path):
+
     await register(websocket)
     try:
         await websocket.send(state_event())
         async for message in websocket:
             data = json.loads(message)
+            print(data)
             if data['user_type'] == 'host':
-                BOARD_CONTENT = data
+                BOARD_CONTENT['content'] = data['content']
+                print(BOARD_CONTENT)
                 await notify_state()
             else:
                 logging.error(

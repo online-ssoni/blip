@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./plugins/codemirror-5.43.0/addon/scroll/simplescrollbars.css">
 </head>
 <body>
+    <input type="text" name="usertype" id="user-type-value">
+    <button id='user-type'>Click</button>
     <div class='editor-body'>
       <div >
           <select id="select-language">
@@ -34,14 +36,16 @@
           <span id='font-size-number'>14</span>
       </div>
     </div>
-    <textarea class="codemirror-textarea"></textarea>
+    <textarea class="codemirror-textarea">
+        hello
+    </textarea>
     <button id='run-button' class='run-btn'>
         Run
     </button> 
     </div>
   <!-- JavaScript -->
   <script src="./js/jquery.min.js"></script>
-  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script> -->
+  <script src="./js/firebase.js"></script>
   <script src="./plugins/codemirror-5.43.0/lib/codemirror.js"></script>
   <script src="./plugins/codemirror-5.43.0/mode/python/python.js"></script>
   <script src="./plugins/codemirror-5.43.0/mode/javascript/javascript.js"></script>
