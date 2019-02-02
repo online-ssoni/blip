@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code Mirror</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./plugins/codemirror-5.43.0/lib/codemirror.css" />
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/theme/darcula.css">
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/theme/blackboard.css">
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/theme/erlang-dark.css">
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/theme/icecoder.css">
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/theme/rubyblue.css">
+    <link rel="stylesheet" href="./plugins/codemirror-5.43.0/addon/scroll/simplescrollbars.css">
+</head>
+<body>
+    <div class='editor-body'>
+      <div >
+          <select id="select-language">
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="php">PHP</option>
+              <option value="python">HTML</option>
+          </select>
+          <select id="select-themes">
+                <option value="erlang-dark">Erlang Dark</option>
+                <option value="icecoder">IceCoder</option>
+                <option value="rubyblue">RubyBlue</option>
+                <option value="darcula">Darcula</option>
+                <option selected='selected' value="blackboard">BlackBoard</option>
+            </select>
+          <input type="range" name="points" min="14" max="35" id='font-size'>
+          <span id='font-size-number'>14</span>
+      </div>
+    </div>
+    <textarea class="codemirror-textarea"></textarea>
+    <button id='run-button' class='run-btn'>
+        Run
+    </button> 
+    </div>
+  <!-- JavaScript -->
+  <script src="./js/jquery.min.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script> -->
+  <script src="./plugins/codemirror-5.43.0/lib/codemirror.js"></script>
+  <script src="./plugins/codemirror-5.43.0/mode/python/python.js"></script>
+  <script src="./plugins/codemirror-5.43.0/mode/javascript/javascript.js"></script>
+  <script src="./plugins/codemirror-5.43.0/mode/xml/xml.js"></script> 
+  <script src="./plugins/codemirror-5.43.0/mode/php/php.js"></script> 
+  <script src="./dist/emmet-codemirror-plugin.js"></script>
+  <script src="./plugins/codemirror-5.43.0/addon/edit/closebrackets.js"></script>
+  <script src="./plugins/codemirror-5.43.0/addon/edit/closetag.js"></script>
+  <script src="./plugins/codemirror-5.43.0/addon/scroll/simplescrollbars.js"></script>
+  <script src="./js/scripts.js"></script>
+</body>
+</html>

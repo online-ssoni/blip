@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+    </head>
+    <body>
+        <script>
+            var ws = new WebSocket("ws://localhost:8848/")
+            var data = {
+                'user_type' : 'host',
+                'message' : 'I am Host'
+            }
+
+            setInterval(()=>{
+                ws.send(JSON.stringify(data))
+            },3000);
+
+            ws.onmessage = (event)=>{
+                console.log(event.data);
+            };
+            
+        </script>
+    </body>
+</html>
