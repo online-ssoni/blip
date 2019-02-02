@@ -1,0 +1,30 @@
+*, html {
+    box-sizing: border-box;
+}
+main {
+    display: grid;
+    grid-template-areas: "head-section"
+                         "main-section";
+}
+
+.col {
+    width: 100%;
+}
+
+/* Article section */
+
+article {
+    grid-area: head-section;
+    height: 50vh;
+    background: yellow;
+
+}
+article header .nav {
+    background: red;
+}
+
+/* Body-card section */
+
+section {
+    grid-area: main-section;
+}
