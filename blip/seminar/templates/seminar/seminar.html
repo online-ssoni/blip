@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Seminar App</title>
+	<script>
+	if(!location.hash.replace('#', '').length) {
+    	location.href = location.href.split('#')[0] + '#' + (Math.random() * 100).toString().replace('.', '');
+	}
+	var newMessageAudio = new Audio("{% static "seminar/assets/sounds/chat_alart.wav" %}");
+	</script>
+	<script src="{% static "seminar/js/lib/socketio.js" %}"></script>
+	<script src="{% static "seminar/js/lib/adapter.js" %}"></script>
+	<script src="{% static "seminar/js/lib/RTCPeerConnection.js" %}"></script>
+	<script src="{% static "seminar/js/lib/broadcast.js" %}"></script>
+	<link rel="stylesheet" href="{% static "seminar/css/tab.css" %}">
+	<link rel="stylesheet" href="{% static "seminar/css/lib/bootstrap.css" %}">
+	<link  rel="stylesheet" href="{% static "seminar/css/main.css" %}">
+	<link rel="stylesheet" href="{% static "seminar/css/chats.css" %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/lib/codemirror.css" %}" />
+	<link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/darcula.css" %}">
+	<link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/darcula.css" %}">
+	
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/blackboard.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/erlang-dark.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/icecoder.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/rubyblue.css" %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+		<table id='host'>
+                <tr>
+                    <td style="text-align: right;">
+                        <input type="text" id="conference-name" placeholder="Broadcast Name">
+                    </td>
+                    <td>
+                        <button id="start-conferencing">New Broadcast</button>
+                    </td>
+                </tr>
+        </table>
+        <table id="rooms-list" class="visible"></table>
+            <div id="participants">
+                
+            </div>
+
+            <div id="self-video">
+
+            </div>
+ 		
+
+    <div class="cd-tabs js-cd-tabs">
+		<nav>
+			<ul class="cd-tabs__navigation js-cd-navigation">
+				<li><a data-content="host-code-editor" class="cd-selected" href="#0"> <i class="fa fa-user-secret"></i> Host Editor</a></li>
+				<li><a data-content="my-code-editor" href="#0" > <i class="fa fa-code"></i> My Editor</a></li>
+				<li><a class='chats' id="chat-link" data-content="chats" href="#0"> <i class="fa fa-comment"></i> <span id="new-message-count">0</span> Chats</a></li>
+				<li><a data-content="slides" href="#0"><i class="fa fa-slideshare"></i>	 Slides</a></li>
+				<li><a data-content="files" href="#0"><i class="fa fa-file"></i> Assets</a></li>
+			</ul> 
+		</nav>
+
+		<ul class="cd-tabs__content js-cd-content">
+			<li data-content="host-code-editor" class="cd-selected">
+				<div class="host-board">
+					<textarea disabled class="host-codemirror-textarea" ></textarea>	
+				</div>
+			</li>
+			<li data-content="my-code-editor">
+					<div class='editor-body'> 
+					
+							<select id="select-language" selected='scratch' >
+									<option value="scratch">BlackBoard</option>
+									<option value="javascript">JavaScript</option>
+									<option value="python">Python</option>
+									<option value="php">PHP</option>
+									<option value="python">HTML</option>
+								</select>
+								<select id="select-themes">
+									  <option value="erlang-dark">Erlang Dark</option>
+									  <option value="icecoder">IceCoder</option>
+									  <option value="rubyblue">RubyBlue</option>
+									  <option value="darcula">Darcula</option>
+									  <option selected='selected' value="blackboard">BlackBoard</option>
+								  </select>
+								<textarea class="codemirror-textarea"></textarea>
+								<div class="editor-buttons">	
+										<button id='run-button' class='run-btn btn btn-warning'><i  class="fa fa-play"></i>Run</button>	
+										<button id='save-button' class='btn btn-primary'><i class="fa fa-save"></i>Save</button>
+										<button id='pull-code' class='btn btn-danger'><i class="fa fa-github"></i>Pull Code</button>
+								</div>
+			
+							</div>
+	
+			</li>
+			<li data-content="slides">
+					<iframe id='slide-frame' src="https://slides.com/abhiyantimilsina/hello-welcome/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+			</li>
+			<li data-content="chats">
+					<div id="chat-container">
+						<div id="message-container">
+							<p class="chat-message">...The chat started here</p>
+						</div>
+
+						<div id="chat-pannel">
+							<form action="" id="chat-form">
+									<input type="text" name="chat_message">
+									<button type="submit"> Send </button>
+							</form>
+						</div>
+						
+						</div>
+			</li>
+			<li data-content="files">
+			
+			</li>
+		</ul> 
+	</div> 
+
+<!-- JavaScript Libraries -->
+
+<script src="{% static "seminar/js/lib/jquery.min.js" %}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/lib/codemirror.js"%}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/hint/show-hint.js"%}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/hint/javascript-hint.js"%}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/python/python.js" %}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/javascript/javascript.js" %}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/xml/xml.js" %}"></script> 
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/php/php.js" %}"></script> 
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/edit/closebrackets.js" %}"></script>
+<script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/selection/active-line.js" %}"></script>
+<script src="{% static "seminar/js/lib/tab.js" %}"></script> 
+<script src="{% static "seminar/js/lib/broadcast-ui.js" %}"></script>
+<script src="{% static "seminar/js/lib/bootstrap.js"%}"></script> 
+
+<!-- Javascript --> 
+<script src="{% static "seminar/js/sockets_client.js" %}"></script> 
+<script src="{% static "seminar/js/chat.js" %}"></script>
+<script src="{% static "seminar/js/codeditor.js" %}  "></script>
+
+</body>
+</html>

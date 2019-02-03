@@ -1,0 +1,16 @@
+  #self-video{
+    width: 150px;
+    height: 150px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+ }
+
+  .self-video{
+    width: 300px;
+    height: 300px;
+ }
+.peer-video{
+    width: 150px;
+    height:150px;
+ }
