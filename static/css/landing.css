@@ -135,9 +135,6 @@ section {
     color: rgb(61, 61, 233);
 }
 
-.card-container .cards * {
-    /* border: 2px solid red; */
-}
 
 .cards {
     display: flex;
