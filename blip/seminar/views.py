@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.http import Http404
 import requests
 import json
+import random
 
 #Views for Seminar
 
@@ -13,10 +14,18 @@ import json
 
 class Seminar(View):
     def get(self,request,seminar_token):
-        return render(request, 'seminar/seminar.html')
-
+        rand_int = random.randint(0,1)
+        if rand_int == 0 :
+            return render(request, 'seminar/seminar.html')
+        else:
+            return render(request, 'seminar/seminar_host.html')
+                
     def post(self, request, seminar_token):
         return HttpResponse('Hello');
+
+
+def host(request):
+    return render(request, 'seminar/seminar_host.html')
 
 # def run_program(request):
 #     data = {

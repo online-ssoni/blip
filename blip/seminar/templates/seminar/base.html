@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <script src="{% static "seminar/js/lib/socketio.js" %}"></script>
+    <script src="{% static "seminar/js/lib/adapter.js" %}"></script>
+    <script src="{% static "seminar/js/lib/RTCPeerConnection.js" %}"></script>
+    <script src="{% static "seminar/js/lib/broadcast.js" %}"></script>
+    <link rel="stylesheet" href="{% static "seminar/css/tab.css" %}">
+    <link rel="stylesheet" href="{% static "seminar/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "seminar/css/chats.css" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" 
+    href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/lib/codemirror.css" %}" />
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/darcula.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/darcula.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/blackboard.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/erlang-dark.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/icecoder.css" %}">
+    <link rel="stylesheet" href="{% static "/seminar/js/lib/plugins/codemirror-5.43.0/theme/rubyblue.css" %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block css %}
+
+
+    {% endblock %}
+
+<body>
+    {% block content %}
+
+
+    {% endblock %}
+
+    <!-- JavaScript Libraries -->
+    <script src="{% static "seminar/js/lib/jquery.min.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/lib/codemirror.js"%}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/hint/show-hint.js"%}"> </script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/hint/javascript-hint.js"%}"> </script> 
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/python/python.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/javascript/javascript.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/xml/xml.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/mode/php/php.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/edit/closebrackets.js" %}"></script>
+    <script src="{% static "seminar/js/lib/plugins/codemirror-5.43.0/addon/selection/active-line.js" %}"></script>
+    <script src="{% static "seminar/js/lib/tab.js" %}"></script>
+    <script src="{% static "seminar/js/lib/broadcast-ui.js" %}"></script>
+
+    <!-- Javascript -->
+    <script src="{% static "seminar/js/sockets_client.js" %}"></script>
+    <script src="{% static "seminar/js/chat.js" %}"></script>
+    <script src="{% static "seminar/js/codeditor.js" %} "></script> 
+{% block script %}
+{% endblock %}
+</body>
+</html>

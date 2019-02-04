@@ -80,40 +80,46 @@ header .nav .navbar {
                          "editor-section editor-section chat-section"
                          "editor-section editor-section chat-section"
                          "editor-section editor-section chat-section";
-    grid-column-gap: 2px;
-    grid-row-gap: 2px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
     height:100vh;
     width: 100%;
     margin: 0 auto;
-    padding: 0 2em;
+    padding: 4px 0.5em 0 0.5em;
     background-image: linear-gradient(to right, #2b5876, #4e4376);
 }
 
 .editor {
     grid-area: editor-section;
     width: 780px;
+    height: 90vh;
 }
 .video-section {
     grid-area: video-section;
+    width:580px;
     height: 280px;
+    position: relative;
+    left: -1em;
     top: 2em;
-    
-}
-video {
-    width:100%;
-    margin-left:0%;
 }
 
 .chat {
     grid-area: chat-section;
     background: gray;
-    bottom: 0em;
-    height: 330px;
+    height: 280px;
+    width: 480px;
+    position: relative;
+    top: 2em;
+    left: 1.9em;
 }
 
-.video-section, .chat {
-    position: relative;
-    right: 2em;
-    width: 420px;
+#video-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
+}
+video {
+    width: 270px;
 }
