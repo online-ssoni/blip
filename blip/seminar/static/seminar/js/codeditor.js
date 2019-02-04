@@ -39,7 +39,7 @@ var host_code_editor = CodeMirror.fromTextArea(host_editor, {
 });
 
 // This is very important for syncronizing the conetents in all the participants
-host_code_editor.setSize(800,480)
+host_code_editor.setSize(580,380)
 
 
 /*===================================== End Of Variable Initialization For Code Editor===================================*/

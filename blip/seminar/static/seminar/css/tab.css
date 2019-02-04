@@ -421,4 +421,18 @@ input, textarea {
   font-size: 1.6rem;
 }
 
+.tab_size {
+  width: 175.4px;
+}
+.tab_size a {
+  padding: 0.3em 2em;
+  overflow: hidden;
+}
 
+.cd-selected{
+  background: #99a9cf !important;
+}
+
+.cd-tabs__navigation{
+  background: #dcdfe7;
+}
