@@ -6,4 +6,3 @@ Online webinar events system
   - Abhiyan Timilsina
   - Mohnish Mallya
   - Debasis Nath
-  - Karan Kanwal
