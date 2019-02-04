@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../static/css/forms/Nav.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/forms/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav">
+            <li class="logo"><a href="#">BLIP</a></li>
+            <li class="navbar">
+                <ul>
+                    <li class="nav-btn"><a href="#">Home</a></li>
+                    <li class="nav-btn"><a href="#">Login</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section class="block">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="full_name" type="text" class="validate" data-length="50">
+                        <label for="full_name">Full Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="user_name" type="text" class="validate" data-length="20">
+                        <label for="user_name">User Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate" data-length="100">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="bio" type="text" class="validate" data-length="120">
+                        <label for="bio">Bio</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="gender">Gender</p>
+                    <div class="input-field col s3">
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Male</span>
+                        </label>
+                    </div>
+                    <div class="input-field col s3">
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Female</span>
+                        </label>
+                    </div>
+                    <div class="input-field col s4">
+                        <label>
+                            <input type="checkbox" class="filled-in" />
+                            <span>Not prefer to say</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3 submit">
+                        <a class="waves-effect waves-light btn">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
