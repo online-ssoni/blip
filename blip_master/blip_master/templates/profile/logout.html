@@ -1,0 +1,48 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/forms/Nav.css' %}">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/forms/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav">
+            <li class="logo"><a href="#">BLIP</a></li>
+            <li class="navbar">
+                <ul>
+                    <li class="nav-btn"><a href="{% url 'blip-home' %}">Home</a></li>
+                    <li class="nav-btn"><a href="{% url 'register' %}">Sign Up</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section class="block">
+        <div class="row">
+
+            <h2>You have been logged out</h2>
+            <hr>
+            <a href="{% url 'login' %}">Log In Again</a>            
+            Need an account? <a href="{% url 'register' %}">Sign up Now</a>
+        </div>
+    </section>
+    <small>
+        
+    </small>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
+{% endblock content %}

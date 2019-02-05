@@ -1,0 +1,17 @@
+/* Forms styles */
+section {
+    width:40%;
+    margin: 1em auto;
+}
+
+.row .submit {
+    margin-top: 2.1em;
+}
+.row .gender {
+    padding-left: 0.7em;
+    color: gray;
+}
+
+.row .submit .btn {
+    background: #1488CC;
+}

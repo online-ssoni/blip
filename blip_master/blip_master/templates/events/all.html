@@ -1,0 +1,30 @@
+{% block content %}
+
+<h1>All events</h1>
+
+<table>
+    <tr>
+        <th>visit</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Host</th>
+        <th>Start Time</th>
+        <th>Last Modified</th>
+        <th>Expired</th>
+    </tr>
+    {% for event in event_info %}
+    <tr>
+        <td><a href="">Click to visit</a></td>
+        <td>{{event.name}}</td>
+        <td>{{event.description}}</td>
+        <td>{{event.host}}</td>
+        <td>{{event.start_time_date}}</td>
+        <td>{{event.last_modified_at}}</td>
+        <td>{{event.expired_status}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+*.pyc
+blip_master.zip
+config.code-workspace
+env/
+.vscode/
+__pycache__/

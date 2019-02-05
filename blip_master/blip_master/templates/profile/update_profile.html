@@ -1,0 +1,57 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Update Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/Nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/update-profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/signup.css' %}">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav">
+            <li class="logo"><a href="#">BLIP</a></li>
+            <li class="navbar">
+                <ul>
+                    <li class="nav-btn"><a href="{% url 'blip-home' %}">Home</a></li>
+                    <li class="nav-btn"><a href="#">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section class="block">
+        <div class="row">
+
+                
+                <form class="col s12" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}     
+                        <h3>Profile Info</h3>
+                        {{ user_form|crispy }}
+                        {{ profile_form|crispy }}
+                        <button type="submit"  class="waves-effect waves-light btn">Update</button>
+                </form>
+
+            
+        </div>
+    </section>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
+
+
+{% endblock content %}

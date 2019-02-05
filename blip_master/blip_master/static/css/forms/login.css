@@ -1,0 +1,11 @@
+section {
+    width:40%;
+    margin: 1em auto;
+}
+
+.row  .btn {
+    background: #1488CC;
+}
+.row .btn:hover {
+    background: #1488CC;
+}
