@@ -32,12 +32,11 @@
 <body>
     <script>
         const USERNAME = "{{participants_context.username}}";
-     
+        const SESSION_ID = "{{participants_context.event_description.id}}"
     </script>
     
     {% block content %}
-
-
+    {{participants_context.seminar_token}}
     {% endblock %}
 
     <!-- JavaScript Libraries -->

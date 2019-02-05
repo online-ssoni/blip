@@ -57,5 +57,3 @@ class EventAttendees(models.Model):
     def save(self, force_insert=False, force_update=False, using=None):
         super().save()
     
-    
-

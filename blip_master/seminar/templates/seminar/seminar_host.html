@@ -28,9 +28,28 @@
                     
                             <ul class="cd-tabs__content js-cd-content">
                                 <li data-content="host-code-editor" class="cd-selected">
-                                        <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"><!--ADDED HTML --><span class="on" style='position: relative; right:1px; font-weight: bolder;'>Code<i class="fa fa-code" style='position: relative; left:1px; font-weight: bolder;'></i></span><span class="off">Text<i class="fa fa-file"></i></span><!--END--></div></label>
-                          
+
+                                            <label  class="switch">
+                                                    <input type="checkbox" id="togBtn" checked>
+                                                    <span class="slider round"></span>
+                                                  </label>
+                                                  
+                                              
                                     <textarea id="text_editor" style="width:702px;" name="editor1"></textarea>
+                                    <div id='loading-spinner'   class="spinner">
+                                        <div class="dot dot1"></div>
+                                        <div class="dot dot2"></div>
+                                        
+                                    </div>
+                                    
+                                        <div id="code_result">
+                                            <span id="close_result" style="padding-bottom:30px; color:white; font-weight:bolder;">
+                                                close<i class="fa fa-times" >
+                                            </i> </span>
+                                            <div id="exec_result"></div>
+                                        </div>
+                                         
+                                                                                                       
                                     <div class='editor-body' id='code_editor'> 
                                             <div class="editor-buttons" style="position: relative; bottom: 50px;">	
                                                     <button id='run-button' class='run-btn btn btn-warning'><i  class="fa fa-play"></i>Run</button>	
@@ -49,6 +68,7 @@
                                                               <option  value="blackboard">BlackBoard</option>
                                                           </select>
                                                 </div>
+                                                
                                             <textarea class="codemirror-textarea"></textarea>
                                     </div>
                                 </li>
@@ -74,19 +94,9 @@
                             </td>
                         </tr>
                     </table>
-                    <!-- <table id="rooms-list" class="visible"></table> -->                    
-                    <!-- <div id="participants"> 
-                                
-                    </div>
-        
-                    <div id="self-video">
-        
-                    </div> -->
-            <div id="video-container">
-
-
-            </div>
-            </div>
+             <div id="video-container">
+        </div>
+</div>
         </section>
         <section class="chat">
             <div class="page">
@@ -118,7 +128,8 @@
                     'cursor_position' : '',
                     'content_type' : 'text',
                     'board_state' : '',
-                    'toggle' : 'dirty'
+                    'toggle' : 'dirty',
+
         })
         });
     });    
@@ -130,7 +141,7 @@
         'user_type' : 'host',
         'type' : 'board',
         'content_type' : 'text',
-        'content' : currentData
+        'content' : currentData,
     }
     broadcastMessage(dataToBroadcast); 
     });

@@ -47,10 +47,12 @@ async def counter(websocket, path):
        async for message in websocket:
            data = json.loads(message)
            if data['type'] == 'chat':
+               CHAT_MESSAGE['session_id'] = data['session_id']
                CHAT_MESSAGE['message'] = data['message']
                await broadcast_message()
            elif data['type'] == 'board':
                if data['user_type'] == 'host':
+                   BOARD_CONTENT['session_id'] = data['session_id']
                    BOARD_CONTENT['content_type'] = data['content_type']
                    BOARD_CONTENT['content'] = data['content']
                    if BOARD_CONTENT['content_type'] == 'code':

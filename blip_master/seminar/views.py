@@ -17,8 +17,8 @@ from seminar.models import SeminarSession
 
 #Views for Seminar
 
-# clientID = '554726cc60d4d57a2f28a33ad9a521a0'
-# clientSecret = 'a09eedfac27ed317c1b80822445a154118aef64e035f11d807c38f7a45c1f0df'
+clientID = '554726cc60d4d57a2f28a33ad9a521a0'
+clientSecret = 'a09eedfac27ed317c1b80822445a154118aef64e035f11d807c38f7a45c1f0df'
 
 @login_required
 def join(request, pk):
@@ -37,7 +37,9 @@ class Seminar(View):
 
     def get(self,request,seminar_token):
         participants_context = {}
-        attendees = get_event_attendees(event_id=seminar_token) 
+        event_description = get_event_attendees(event_id=seminar_token)
+        attendees = event_description['attendees']
+        participants_context['event_description'] = Event.objects.get(pk=seminar_token)
         participants_context['is_host'] = check_host(request.user, event_id=seminar_token)
         participants_context['attendees'] = attendees
         participants_context['username'] = request.user.username
@@ -49,7 +51,6 @@ class Seminar(View):
             else:
                 return HttpResponse('Forbiddden')
     
-            
     def post(self, request, seminar_token):
         event = Event.objects.get(pk=seminar_token)
         seminar_session = SeminarSession()
@@ -60,24 +61,19 @@ class Seminar(View):
         seminar_session.save()
         return JsonResponse({'status':200}, safe=False)
 
+@csrf_exempt
+def run_program(request):
+    
+    data = {
+        'clientId' : clientID,
+        'clientSecret' : clientSecret,
+        'script' : request.POST.get('script',''),
+        'language' : 'python3',
+        'versionIndex' : 1,
+    };
+    response = requests.post('https://api.jdoodle.com/v1/execute',json=data);
 
-
-
-# def host(request):
-#     return render(request, 'seminar/seminar_host.html')
-
-# def run_program(request):
-#     data = {
-#         'clientId' : clientID,
-#         'clientSecret' : clientSecret,
-#         'script' : "print('hello')",
-#         'language' : 'python3',
-#         'versionIndex' : 1,
-#     };
-#     print(data)
-#     response = requests.post('https://api.jdoodle.com/v1/execute',json=data);
-   
-#     return JsonResponse(response.json(), safe=False)
-
+    return JsonResponse(response.json(), safe=False)
+    
 
 

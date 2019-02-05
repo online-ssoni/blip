@@ -13,10 +13,15 @@ const SOCKET_ENDPOINT_URL = "ws://localhost:8848/"
 const WS = new WebSocket(SOCKET_ENDPOINT_URL)
 
 WS.onmessage = (event) => {
-   endPointData = JSON.parse(event['data'])
-   if(endPointData['toggle'] == 'dirty' && loggedInUser=='participant') {
+    endPointData = JSON.parse(event['data'])
+    console.log(endPointData,'session_id' , SESSION_ID)
+    if(endPointData['session_id'] != SESSION_ID){
+        return;
+    }
+   
+    if(endPointData['toggle'] == 'dirty' && loggedInUser=='participant') {
     toggleHostEditor();      
-    console.log('slkdasdlkaldkl');
+  
    }
    if(!validate(endPointData['session_id'])){
         return;
@@ -47,7 +52,9 @@ function validate(sessionToken) {
 }
 
 function broadcastMessage(message) {
-    console.log('Called');
+    message['session_id'] = SESSION_ID;
+    message['username'] = USERNAME;
+    
     WS.send(JSON.stringify(message));
 }
 

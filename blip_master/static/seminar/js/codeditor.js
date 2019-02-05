@@ -7,6 +7,8 @@
 
 /*===================================== Variable Initialization For Code Editor===================================*/
 
+// $('code_editor').hide()
+// $('#loading-spinner').hide()
 
 // Initial editor configuration 
 var language_selector = $('#select-language');
@@ -58,17 +60,27 @@ editor.setSize(580,380);
 
 
 function runCode(script) {
-    requestBody = {
-        'clientId' : clientID,
-        'clientSecret' : clientSecret,
-        'script' : script,
-        'language' : 'python2',
-        'versionIndex' : 1,
-         
-    }
-    $.post(requestURL, requestBody, (data, status)=>{
+    requestURL = "/seminar/run/"
+    $.post(requestURL, {'script':script}, (data, status)=>{
+        
+        $('#code_result').show();
+        $('#loading-spinner').hide();
+        result_html = `
+        
+            <hr>     
+         <div style="color:white; font-weight:bolder; font-size:18px;">
+         <p class="output_stats" >CPU TIME: ${data['cpuTime']} </p>
+         <p class="output_stats" >Memory: ${data['memory']} </p>
+         <p class="output_result" >Output: ${data['output']}   </p>   
+   
+
+         </div>
+
+              `
+        $('#exec_result').html(result_html);
     });
 }
+
 
 editor.on("change", broadcastHostChanges);
 
@@ -85,6 +97,8 @@ language_selector.on('change',function(){
 
 
 runButton.click(()=> {
+    $('#code_editor').hide();
+    $('#loading-spinner').show();
     runCode(editor.getValue());
 });
 
@@ -97,7 +111,8 @@ function broadcastHostChanges(){
                     'cursor_position' : currentCursorPosition,
                     'content_type' : 'code',
                     'board_state' : editorconfig,
-                    'toggle' : 'pristine'
+                    'toggle' : 'pristine',
+                    'session_id' : SESSION_ID
         }));
 }
 
@@ -131,3 +146,23 @@ function handleText(boardState){
 }
 
 /*===================================== End Of Functions for Code Editor ===================================*/
+
+const dot1 = document.querySelector('.dot1');
+const dot2 = document.querySelector('.dot2');
+let hue = 0;
+
+const adjustBgCol = () => {
+  dot1.style.backgroundColor = 'hsl(' + hue + ',50%,50%)';
+  dot2.style.backgroundColor = 'hsl(' + hue + ',50%,50%)';
+}
+
+$('#close_result').click(()=>{
+    $('#code_result').hide();
+    $('#code_editor').show();
+   
+});
+
+setInterval(function(){ 
+  hue++;
+  adjustBgCol();
+}, 15);
