@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond|Roboto+Mono');
+
+*,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* General */
+ul,
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn a,
+.nav .logo a  {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn {
+    border-radius: 24px;
+    background: #1488CC;
+    border: 1.5px solid #fff;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.5em 1.2em;
+}
+
+
+.btn:hover,
+.btn a:hover {
+    background: #fff;
+    color: #1488CC;
+}
+
+
+/* Navbar style section */
+
+header {
+    background: #1488CC;
+    width: 100%;
+    padding: 1.2em;
+}
+
+header .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .nav .logo {
+    font-size: 2em;
+    flex: 75%;
+    font-family: 'Lobster', cursive;
+}
+
+
+
+header .nav .navbar {
+    flex: 35%;
+}
+
+.nav .navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Dashboard section */
+
+.container {
+    display: grid;
+    grid-template-areas: "editor-section editor-section video-section"
+                         "editor-section editor-section chat-section"
+                         "editor-section editor-section chat-section"
+                         "editor-section editor-section chat-section";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    height:100vh;
+    width: 100%;
+    margin: 0 auto;
+    background-image: linear-gradient(to right, #2b5876, #4e4376);
+}
+
+.editor {
+    grid-area: editor-section;
+    width: 780px;
+    height: 100vh;
+}
+
+.video-section {
+    grid-area: video-section;
+    width:580px;
+    height: 280px;
+    position: relative;
+    left: -1em;
+    top: 2em;
+}
+
+.chat {
+    grid-area: chat-section;
+    height: 280px;
+    width: 480px;
+    position: relative;
+    bottom: 0em;
+    left: 1.9em;
+}
+
+#video-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+video {
+    width: 220px;
+    height: 180px;
+}
+
+
+  

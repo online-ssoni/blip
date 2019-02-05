@@ -14,7 +14,7 @@ class Profile(models.Model):
         ('F', 'Female'),
         ('N', 'Not prefer to say')
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='N')
     created_at = models.DateField(auto_now_add=True)
     bio = models.CharField(max_length=500, default='This is default bio')
 

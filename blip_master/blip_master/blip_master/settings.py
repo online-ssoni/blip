@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'django_forms_bootstrap',
     'bootstrap4',
+    'seminar',
 ]
 
 MIDDLEWARE = [

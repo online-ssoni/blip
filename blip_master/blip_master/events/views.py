@@ -20,9 +20,10 @@ def create_event(request):
     context = {'event_form': event_form,}
     return render(request, 'events/event_form.html', context)
 
-@login_required
-def join(request, pk):
-    return render(request, 'events/event_form.html')
+# @login_required
+# def join(request, pk):
+#     return render(request, 'seminar.views.Seminar.as_view()', seminar_token='safsdf' )
+
 
 
 @login_required

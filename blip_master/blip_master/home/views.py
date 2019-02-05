@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from home.forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
+from django.contrib.auth.models import Group, Permission, User
 from django.contrib.auth.decorators import login_required
 from blip_core.models import Profile, Event, EventAttendees
 from datetime import datetime 
@@ -28,6 +29,9 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in')
+            current_user = User.objects.get(username=username)
+            user_profile = Profile(user=current_user)
+            user_profile.save()
             return redirect('login')
     else:
         form = UserRegisterForm()

@@ -1,0 +1,13 @@
+
+{% block content %}
+<h1>Start/Join session</h1>
+
+
+{% if is_host %}
+<a href="{% url 'seminar:seminar_dashboard' seminar_token%}">Click to start session</a>
+{% else %}
+<h5>You are not host. click to subscribe and join event</h5>
+<a href="">Click to subscribe</a>
+{% endif %}
+
+{% endblock content %}
