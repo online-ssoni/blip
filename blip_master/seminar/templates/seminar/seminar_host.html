@@ -7,6 +7,8 @@
 				location.href = location.href.split('#')[0] + '#' + (Math.random() * 100).toString().replace('.', '');
 		}
 		loggedInUser = 'host'
+     
+        
 </script>
   
 <link rel="stylesheet" href="{% static "/seminar/css/dashboard-host.css" %}">
@@ -99,7 +101,13 @@
 
 {% block script %}
 <script>
-   
+       requestURL = location.href;
+        $.post(requestURL, {
+            'url': location.href
+        },(data)=>{
+            console.log(data);
+        });
+        
 
     $('#code_editor').hide();
     $('#togBtn').click(()=>{
@@ -129,3 +137,4 @@
 </script> 
 
 {% endblock %}
+
