@@ -26,9 +26,8 @@ header h1 {
 
 .cd-tabs {
   position: relative;
-  width: 90%;
-  max-width: 960px;
-  margin: 2em auto;
+  width: 98%;
+  margin: 0em auto;
 }
 
 @supports (background: linear-gradient(to left, #000, #000)) or (background: -webkit-linear-gradient(to left, #000, #000)) {
@@ -430,7 +429,9 @@ input, textarea {
 }
 
 .cd-selected{
-  background: #99a9cf !important;
+  background: #2c2d30 !important;
+  height: 90vh;
+  padding: 0;
 }
 
 .cd-tabs__navigation{

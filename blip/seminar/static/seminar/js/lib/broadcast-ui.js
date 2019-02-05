@@ -29,7 +29,15 @@
     onRemoteStream: function(media) {
         var video = media.video;
         video.classList.add('peer-video')
-        participants.insertBefore(video, participants.firstChild);
+        if(loggedInUser == 'host') {
+            var contains = document.createElement('div');
+            contains.classList.add('contains');
+            contains.append(video);
+            participants.append(contains);
+        } else {
+            participants.append(video);
+        }
+        
         video.play();
     },
     onRoomFound: function(room) {
@@ -73,10 +81,10 @@ function captureUserMedia(callback) {
     video.setAttribute('controls', true);
     video.muted = true
     video.controls = false
-    video.classList.add('self-video')
-    var host = document.getElementById('self-video')
+    // video.classList.add('self-video')
+    // var host = document.getElementById('self-video')
     
-    host.appendChild(video);
+    // host.appendChild(video);
 
     getUserMedia({
         video: video,
@@ -95,7 +103,7 @@ function captureUserMedia(callback) {
 var broadcastUI = broadcast(config);
 
 /* UI specific */
-var participants = document.getElementById("participants") || document.body;
+var participants = document.getElementById("video-container");
 var startConferencing = document.getElementById('start-conferencing');
 var roomsList = document.getElementById('rooms-list');
 

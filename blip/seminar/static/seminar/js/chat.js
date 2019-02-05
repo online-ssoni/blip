@@ -28,6 +28,7 @@ chatsTab.click(()=>{
 chatForm.submit((event)=>{
     event.preventDefault();
     let newMessageText = decodeURI(chatForm.serialize().split('=')[1]);
+    
     let message = {
         'type' : 'chat',
         'message' : newMessageText,
@@ -44,13 +45,17 @@ function notifyUser(){
     }
 }
 
-const handleNewMessage = (newMessage)=>{
-    message = newMessage['message'];
+const handleNewMessage = (peerMessage)=>{
+    var newMessage = document.createElement('div');
+    var msgContainer = document.getElementsByClassName('conversation-container')[0];
+    messageText = peerMessage['message'];
+    newMessage.classList.add('message');
+    newMessage.classList.add('received');
+    newMessage.innerText = messageText;
+    msgContainer.append(newMessage);
     notifyUser();
-    messageContainer.append(`<p class="chat-message">${message}</p>`);
 }
 
 
 /*===================================== End Of Functions For Chats ===================================*/
-
 

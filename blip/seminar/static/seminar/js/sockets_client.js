@@ -14,16 +14,26 @@ const WS = new WebSocket(SOCKET_ENDPOINT_URL)
 
 WS.onmessage = (event) => {
    endPointData = JSON.parse(event['data'])
+   if(endPointData['toggle'] == 'dirty' && loggedInUser=='participant') {
+    toggleHostEditor();      
+    console.log('slkdasdlkaldkl');
+   }
    if(!validate(endPointData['session_id'])){
         return;
    }
    if(endPointData['type']=='state') {
-        hostEditorHandler(endPointData);
+       if(endPointData['content_type']=='text'){
+            handleText(endPointData); 
+       } else {
+         hostEditorHandler(endPointData);
+       }
+       
    }
    else if(endPointData['type']=='chat') {
       //Call Chat Service Here
       handleNewMessage(endPointData);
    }
+   
 }
 
 
@@ -37,9 +47,14 @@ function validate(sessionToken) {
 }
 
 function broadcastMessage(message) {
+    console.log('Called');
     WS.send(JSON.stringify(message));
 }
 
-
+function toggleHostEditor() {
+	$('#cke_text_editor').fadeToggle(0,'swing',()=>{
+            $('#host_code_editor').fadeToggle(0,'swing');
+        });
+}
 /*===================================== End Of Opening and propagating message===================================*/
 

@@ -85,7 +85,7 @@ header .nav .navbar {
     height:100vh;
     width: 100%;
     margin: 0 auto;
-    padding: 0 2em;
+   
     background-image: linear-gradient(to right, #2b5876, #4e4376);
 }
 
@@ -99,21 +99,27 @@ header .nav .navbar {
     top: 2em;
     
 }
-video {
+.video-style {
     width:100%;
     margin-left:0%;
 }
 
 .chat {
     grid-area: chat-section;
-    background: gray;
     bottom: 0em;
     height: 330px;
 }
 
 .video-section, .chat {
     position: relative;
-    right: 2em;
-    width: 420px;
+    right: 0em;
+    height: 280px;
+    width: 480px;
 
+}
+
+/* Video Section */
+.peer-video{
+    width:100%;
+    margin-left:0%;
 }

@@ -85,15 +85,15 @@ header .nav .navbar {
     height:100vh;
     width: 100%;
     margin: 0 auto;
-    padding: 4px 0.5em 0 0.5em;
     background-image: linear-gradient(to right, #2b5876, #4e4376);
 }
 
 .editor {
     grid-area: editor-section;
     width: 780px;
-    height: 90vh;
+    height: 100vh;
 }
+
 .video-section {
     grid-area: video-section;
     width:580px;
@@ -105,11 +105,10 @@ header .nav .navbar {
 
 .chat {
     grid-area: chat-section;
-    background: gray;
     height: 280px;
     width: 480px;
     position: relative;
-    top: 2em;
+    bottom: 0em;
     left: 1.9em;
 }
 
@@ -121,5 +120,9 @@ header .nav .navbar {
 
 }
 video {
-    width: 270px;
+    width: 220px;
+    height: 180px;
 }
+
+
+  

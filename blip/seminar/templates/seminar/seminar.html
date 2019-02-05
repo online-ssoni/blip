@@ -1,12 +1,16 @@
+
+
 {% extends "seminar/base.html" %}
 {% load static %}
 
 {% block css %}
 
+<script>var loggedInUser = 'participant';</script>
 <link rel="stylesheet" href="{% static "/seminar/css/dashboard.css" %}">
 {% endblock %}
 
 {% block content %}
+
 <section class="container">
 		<article class="editor">
 			<div id="edit-zone">
@@ -15,7 +19,6 @@
 								<ul class="cd-tabs__navigation js-cd-navigation">
 									<li class="tab_size"><a data-content="host-code-editor" class="cd-selected" href="#0"> <i class="fa fa-user-secret"></i> Host Editor</a></li>
 									<li class="tab_size"><a data-content="my-code-editor" href="#0" > <i class="fa fa-code"></i> My Editor</a></li>
-									<!-- <li class="tab_size"><a class='chats' id="chat-link" data-content="chats" href="#0"> <i class="fa fa-comment"></i> <span id="new-message-count">0</span> Chats</a></li> -->
 									<li class="tab_size"><a data-content="slides" href="#0"><i class="fa fa-slideshare"></i>	 Slides</a></li>
 									<li class="tab_size"><a data-content="files" href="#0"><i class="fa fa-file"></i> Assets</a></li>
 								</ul> 
@@ -23,13 +26,16 @@
 					
 							<ul class="cd-tabs__content js-cd-content">
 								<li data-content="host-code-editor" class="cd-selected">
-									<div class="host-board">
-										<textarea disabled class="host-codemirror-textarea" ></textarea>	
+										<textarea id="text_editor" style="width:702px;" name="editor"></textarea>
+									
+									<div id="host_code_editor" class="host-board">
+										<textarea  disabled class="host-codemirror-textarea" ></textarea>	
 									</div>
 								</li>
 								<li data-content="my-code-editor">
-										<div class='editor-body'> 
 										
+										<div class='editor-body'> 
+
 												<select id="select-language" selected='scratch' >
 														<option value="scratch">BlackBoard</option>
 														<option value="javascript">JavaScript</option>
@@ -58,23 +64,8 @@
 										<iframe id='slide-frame' src="https://slides.com/abhiyantimilsina/hello-welcome/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 					
 								</li>
-								<!-- <li data-content="chats">
-										<div id="chat-container">
-											<div id="message-container">
-												<p class="chat-message">...The chat started here</p>
-											</div>
-					
-											<div id="chat-pannel">
-												<form action="" id="chat-form">
-														<input type="text" name="chat_message">
-														<button type="submit"> Send </button>
-												</form>
-											</div>
-											
-											</div>
-								</li> -->
-								<li data-content="files">
-								
+								<li data-content="files"> 
+      
 								</li>
 							</ul> 
 						</div> 
@@ -82,35 +73,25 @@
 			</div>
 		</article>
 		<section class="video-section">
-				<table id='host'  class="visible">
-                        <tr>
-                            <td style="text-align: right;">
-                                <input type="text" id="conference-name" placeholder="Broadcast Name">
-                            </td>
-                            <td>
-                                <button id="start-conferencing">New Broadcast</button>
-                            </td>
-                        </tr>
-                    </table>
+
                     <table id="rooms-list" class="visible"></table>                    
-                    <div id="participants">
-                        
-                    </div>
-        
-                    <div id="self-video">
-        
-                </div>
+                
 			<div id="video-container">
-				<video controls>
-					<source src="mov_bbb.mp4" type="video/mp4">
-					<source src="mov_bbb.ogg" type="video/ogg">
-					Your browser does not support HTML5 video.
-				</video>
 			</div>
 		</section>
 		<section class="chat">
 			<div id="chat-container">
+				<div id="message-container">
+					<p class="chat-message">...The chat started here</p>
+				</div>
 
+				<div id="chat-pannel">
+						<div class="page">
+                        	<div id="chat-container">
+									{% include "seminar/macros/chat.html" %}						
+							</div>
+						</div>
+				</div>
 			</div>
 		</section>
 		<section class="extra">
@@ -122,5 +103,11 @@
 
 {% endblock %}
 
-
+{% block script %}
+<script>
+$('#host_code_editor').hide();
+var ckeditor = CKEDITOR.replace( 'editor' );
+ckeditor.config.readOnly = true;
+</script>
+{% endblock %}
 
