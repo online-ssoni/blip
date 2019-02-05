@@ -87,12 +87,8 @@ WSGI_APPLICATION = 'blip_master.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blip_master',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.sqlite',
+        
     }
 }
 
