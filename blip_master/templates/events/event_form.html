@@ -1,0 +1,65 @@
+
+{% load static %}
+
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_css %} 
+{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+{{ event_form.media }}        {# Adds date-picker required JS and CSS #}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create Event</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/Nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/update-profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav">
+            <li class="logo"><a href="#">BLIP</a></li>
+            <li class="navbar">
+                <ul>
+                    <li class="nav-btn"><a href="#">Home</a></li>
+                    <li class="nav-btn"><a href="#">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section class="block">
+        <div class="row">
+            <h3>Create a new event</h3>
+            <form class="col s12" method="POST">
+                    {% csrf_token %}
+                    {{ event_form|crispy }}
+                </fieldset>
+                    <button type="submit" class="waves-effect waves-light btn">Create event</button>
+            </form>
+        </div>
+    </section>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/forms/event.js' %}"></script>
+    <!-- <script>
+            $(function() {
+               $( "#id_start_time_date_0" ).datepicker();
+               $( "#id_start_time_date_0" ).datepicker("show");
+            });
+    </script> -->
+    
+</body>
+
+</html>
+{% endblock content %}

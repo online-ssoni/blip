@@ -1,0 +1,24 @@
+{% block content %}
+<h1>Event Description</h1>
+
+{{ object.name }}
+<br>
+{{ object.description }}
+<br>
+{{ object.host.username }}
+<br>
+{{ object.start_time_date }}
+<br>
+{{ object.created_at }}
+<br>
+{{ object.last_modified_at }}
+<br>
+{{ object.expired_status }}
+
+
+<br>
+{% if user.is_authenticated %}
+<a href="">Register for this event</a>
+{% endif %}
+
+{% endblock content %}

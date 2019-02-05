@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond|Roboto+Mono');
+
+*,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* General */
+ul,
+li {
+    list-style-type: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.nav-btn a,
+.nav .logo a  {
+    text-decoration: none !important;
+    color: #fff !important;
+}
+
+.nav-btn {
+    border-radius: 24px !important;
+    background: #1488CC !important;
+    border: 1.5px solid #fff !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 0.5em 1em;
+}
+
+
+.nav-btn:hover,
+.nav-btn a:hover {
+    background: #fff !important;
+    color: #1488CC !important;
+}
+
+
+/* Navbar style section */
+
+header {
+    background: #1488CC;
+    width: 100%;
+    padding: 1.2em;
+}
+
+header .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .nav .logo {
+    font-size: 2em;
+    flex: 75%;
+    font-family: 'Lobster', cursive;
+}
+
+
+
+header .nav .navbar {
+    flex: 35%;
+}
+
+.nav .navbar ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-evenly !important;
+}
