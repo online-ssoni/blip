@@ -1,0 +1,160 @@
+
+.switch {
+  position: relative;
+  left:600px;
+  bottom:30px;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.spinner {
+  animation: spin 3s linear infinite;
+  width: 60px;
+  height: 60px;
+}
+
+.dot1, .dot2 {
+  animation: pulse 1.5s ease-in-out infinite alternate;
+  border-radius: 50%;
+  background-color: aqua;
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
+.dot2 {
+  animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.25
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+#loading-spinner{
+  position: absolute;
+  top:50%;
+  right:50%;
+  display: none;
+}
+
+#code_result{
+ width:100%;
+ height:300px;
+ background-color:purple;
+ color:white;
+ display:none;
+}
+#close_result{
+  cursor: pointer;
+}
+.call_button {
+  width:50px;
+  height:50px;
+  color:white;
+  background-color:skyblue;
+  border-radius:100%;
+  animation-name: callanimation;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.call_icon {
+  position:relative;
+  color:white;
+
+  top:17px;
+  left:16px;
+}
+
+@keyframes callanimation{
+  from {transform:scale(0.8);}
+  to {transform:scale(1);}
+}
+
+.host_button{
+  position: relative;
+  bottom: 15px;
+}
+.host_button span {
+  background-color:skyblue;
+  padding:13px;
+  margin:5px;
+  border-radius:20px;
+  
+}
+.exit_event{
+  background-color:crimson !important;
+}
+
+
+
+

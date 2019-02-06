@@ -1,0 +1,25 @@
+
+{% block content %}
+<h1>Start/Join session</h1>
+
+
+
+
+{% if is_host and event_started%}
+   <h2>You are a host!</h2>
+   <a href="{% url 'seminar:seminar_dashboard' seminar_token%}">Click to start Event</a>
+{% elif is_subscribed and event_started and event_live %}
+    <h2>Event is currently live</h2>
+    <h4>Click below to join event</h4>
+    <a href="{% url 'seminar:check_live' seminar_token %}">Join Event</a>
+{% elif is_subscribed and event_started and not event_live %}
+    <h2>This Event is expired</h2>
+{% elif is_subscribed and not event_started %}
+    <h2>This event is not yet started!</h2>
+{% else %}
+    <h2>You have not subscribed for this event</h2>
+    <h4>Click below to subscribe for this event</h4>
+    <a href="{% url 'events:subscribe' seminar_token %}">Subscribe</a>
+{% endif %}
+
+{% endblock content %}

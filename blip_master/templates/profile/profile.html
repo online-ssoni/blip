@@ -1,0 +1,80 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/profile.css' %}">
+</head>
+
+<body>
+    <header>
+        <ul class="nav">
+            <li class="logo"><a href="{% url 'blip-home' %}">BLIP</a></li>
+            <li class="navbar">
+                <ul>
+                    <li class="btn"><a href="{% url 'blip-home' %}">Home</a></li>
+                    <li class="btn"><a href="{% url 'blip-home' %}">Dashboard</a></li>
+                    <li class="btn"><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <section class="container">
+        <div class="jumbotron">
+            <div class="img-holder">
+                <img class="responsive-img" src="{% static 'images/profile.svg' %}">
+            </div>
+            <div class="content">
+                <h2>{{ username }}</h2>
+                <p><em>{{ created_at }}</em></p>
+                <p id="bio">{{ bio }}</p>
+            </div>
+        </div>
+        
+        <div class="fold">
+            <div class="folder1">
+                <div class="card">
+                    <div class="card-header">
+                        <img class="responsive-img" src="../static/images/icons8-user-male.svg" alt="avatar">
+                    </div>
+                    <div class="card-body animate">
+                        <p>Email: {{ email }}</p>
+                        <p>Username: {{ username }}</p>
+                        <p>Gender: {{ gender }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="folder2">
+                <div class="events animate">
+                    <ul class="details">
+                        <li><a href="{% url 'events:upcoming_events' %}">Upcoming events</a><span> {{ upcoming_events }}</span></li>
+                        <li>Events attended<span> {{ events_attended_count }}</span></li>
+                        <li><a href="{% url 'events:events_created' %}">Events created<span> {{ events_created }}</span></a></li>
+                    </ul>
+                </div>
+                <div class="btn-holder">
+                        <div class="btn-plus"><a href="{% url 'update_profile' %}">Update Profile</a></div>
+                        <div class="btn-plus"><a href="{% url 'events:event-create' %}">Create Event</a></div>
+                        
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+</body>
+
+</html>
+{% endblock content %}
+
+
+
+
+

@@ -1,0 +1,93 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html lang="en">
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blip- landing page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/landing.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+    <main id="raw">
+        <article class="col">
+            <header>
+                <ul class="nav">
+                    <li class="logo"><a href="#">BLIP</a></li>
+
+                    <li class="navbar">
+                        <ul>
+                            {% if user.is_authenticated %}
+                            <li class="btn"><a href="{% url 'logout' %}">Logout</a></li>
+                            <li class="btn"><a href="{% url 'profile' %}">Profile</a></li>
+                            {% else %}
+                            <li class="btn"><a href="{% url 'login' %}">Login</a></li>
+                            <li class="btn"><a href="{% url 'register' %}">Register</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+            <section class="banner">
+                <div class="equal"><img class="land-man" src="{% static 'images/main.svg' %}"></div>
+                <div class="equal">
+                    <h3>Welcome To Blip</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse molestias dolore quisquam placeat
+                        facere impedit reprehenderit minus ipsum architecto! Provident odit deserunt dolore dolorem
+                        deleniti! Quaerat illum distinctio hic. Deleniti.
+                    </p>
+                </div>
+            </section>
+        </article>
+        <section class="col card-container">
+            <h1>Upcomig Events</h1>
+            <div class="cards">
+                
+                
+                {% for event in events %}
+                    <div class="card">
+                        <div class="img-holder">
+                            <img src="{% static 'images/icons8-user-male.svg' %}">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h4>{{ event.event_name }}</h4>
+                                <p>{{ event.event_description }}</p>
+                                <p><em>Submitted by <a href="#"> {{ event.host }}</a></em></p>
+                                <div class="timer">
+                                    <p>Starts on - <span> {{ event.starts_in }}</span></p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="extra-content">
+                                <p><span class="member">4</span> member have joined out of <span class="limit">5</span></p>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'seminar:join' event.event_id %}" class="join-btn">Join Now</a>
+                                {% else %}
+                                <a href="#" class="join-btn disabled">Log in to join</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <section class="footer col">
+            <h3>Contact Us</h3>
+            <div class="icons">
+                <span style="font-size: 28px; color: rgb(22, 18, 212);"><i class="fab fa-facebook-f"></i></span>
+                <span style="font-size: 28px; color: Dodgerblue;"><i class="fab fa-twitter"></i></span>
+                <span style="font-size: 28px; color: rgb(255, 30, 30);"><i class="fab fa-instagram"></i></span>
+            </div>
+        </section>
+</body>
+
+</html>
+{% endblock content %}
