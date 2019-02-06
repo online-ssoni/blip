@@ -16,7 +16,16 @@
 
 
 </head>
-
+<style>
+        .head-size {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 0.8em;
+            box-shadow: 1px 1px 1px 1px blue;
+            background: #1488CC;
+            color:#fff;
+        }
+</style>
 <body>
     <header>
         <ul class="nav">
@@ -32,7 +41,7 @@
     <section class="block">
         <div class="row">
 
-            <h1>Login</h1>  
+            <h3 class="head-size">Login</h3>  
             <form class="col s12" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}

@@ -15,11 +15,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms/Nav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms/update-profile.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms/signup.css' %}">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
 </head>
-
+<style>
+select {
+    display: block;
+}
+</style>
 <body>
     <header>
         <ul class="nav">
@@ -38,7 +42,7 @@
                 
                 <form class="col s12" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}     
-                        <h3>Profile Info</h3>
+                        <h3 class="head-size">Profile Info</h3>
                         {{ user_form|crispy }}
                         {{ profile_form|crispy }}
                         <button type="submit"  class="waves-effect waves-light btn">Update</button>

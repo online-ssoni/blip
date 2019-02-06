@@ -10,13 +10,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/landing.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/Nav.css' %}">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
-
+<style>
+    .timer {
+        padding: 2em !important;
+    }
+</style>
 <body>
+        <header>
+                <ul class="nav">
+                    <li class="logo"><a href="#">BLIP</a></li>
+                    <li class="navbar">
+                        <ul>
+                            <li class="nav-btn"><a href="#">Home</a></li>
+                            <li class="nav-btn"><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
     <main id="raw">
         <section class="col card-container">
-            <h1>Upcomig Events</h1>
+            <h1>Created Events</h1>
             <div class="cards">
                 
                 

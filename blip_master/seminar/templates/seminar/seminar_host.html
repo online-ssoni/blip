@@ -13,101 +13,114 @@
   
 <link rel="stylesheet" href="{% static "/seminar/css/dashboard-host.css" %}">
 {% endblock %}
-{% block content %}
-    <section class="container">
-        <article class="editor">
-            <div id="edit-zone">
-                    <div class="cd-tabs js-cd-tabs">
-                            <nav>
-                                <ul class="cd-tabs__navigation js-cd-navigation">
-                                    <li class="tab_size"><a data-content="host-code-editor" class="cd-selected" href="#0"> <i class="fa fa-code"></i>Editors</a></li>
-                                    <li class="tab_size"><a data-content="slides" href="#0"><i class="fa fa-slideshare"></i>Slides</a></li>
-                                    <li class="tab_size"><a data-content="files" href="#0"><i class="fa fa-file"></i> Assets</a></li>
-                                </ul> 
-                            </nav>
-                    
-                            <ul class="cd-tabs__content js-cd-content">
-                                <li data-content="host-code-editor" class="cd-selected">
 
-                                            <label  class="switch">
-                                                    <input type="checkbox" id="togBtn" checked>
-                                                    <span class="slider round"></span>
-                                                  </label>
+{% block content %}
+    <div class="main-container">
+            <div class="header">
+                    <ul>
+                        <li class="btn"><a class="waves-effect waves-light btn" href="{% url 'blip-home' %}">Home</a></li>
+                        <li class="btn"><a class="waves-effect waves-light btn" href="{% url 'blip-home' %}">Dashboard</a></li>
+                        <li class="btn"><a class="waves-effect waves-light btn" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+        <section class="container">
+            <article class="editor">
+                <div id="edit-zone">
+                        <div class="cd-tabs js-cd-tabs">
+                                <nav>
+                                    <ul class="cd-tabs__navigation js-cd-navigation">
+                                        <li class="tab_size"><a data-content="host-code-editor" class="cd-selected" href="#0"> <i class="fa fa-code"></i>Editors</a></li>
+                                        <li class="tab_size"><a data-content="slides" href="#0"><i class="fa fa-slideshare"></i>Slides</a></li>
+                                        <li class="tab_size"><a data-content="files" href="#0"><i class="fa fa-file"></i> Assets</a></li>
+                                    </ul> 
+                                </nav>
+                        
+                                <ul class="cd-tabs__content js-cd-content">
+                                    <li data-content="host-code-editor" class="cd-selected">
+    
+                                                <label  class="switch">
+                                                        <input type="checkbox" id="togBtn" checked>
+                                                        <span class="slider round"></span>
+                                                      </label>
+                                                      
                                                   
-                                              
-                                    <textarea id="text_editor" style="width:702px;" name="editor1"></textarea>
-                                    <div id='loading-spinner'   class="spinner">
-                                        <div class="dot dot1"></div>
-                                        <div class="dot dot2"></div>
-                                        
-                                    </div>
-                                    
-                                        <div id="code_result">
-                                            <span id="close_result" style="padding-bottom:30px; color:white; font-weight:bolder;">
-                                                close<i class="fa fa-times" >
-                                            </i> </span>
-                                            <div id="exec_result"></div>
+                                        <textarea id="text_editor" style="width:702px;" name="editor1"></textarea>
+                                        <div id='loading-spinner'   class="spinner">
+                                            <div class="dot dot1"></div>
+                                            <div class="dot dot2"></div>
+                                            
                                         </div>
-                                         
-                                                                                                       
-                                    <div class='editor-body' id='code_editor'> 
-                                            <div class="editor-buttons" style="position: relative; bottom: 50px;">	
-                                                    <button id='run-button' class='run-btn btn btn-warning'><i  class="fa fa-play"></i>Run</button>	
-                                                    <button id='save-button' class='btn btn-primary'><i class="fa fa-save"></i>Save</button>
-                                                    <select id="select-language" class="sel-light" selected='scratch' >
-                                                            <option value="javascript">JavaScript</option>
-                                                            <option value="python">Python</option>
-                                                            <option value="php">PHP</option>
-                                                            <option value="python">HTML</option>
-                                                        </select>
-                                                        <select id="select-themes" class="sel-light">
-                                                              <option value="erlang-dark">Erlang Dark</option>
-                                                              <option value="icecoder">IceCoder</option>
-                                                              <option selected='selected' value="rubyblue">RubyBlue</option>
-                                                              <option value="darcula">Darcula</option>
-                                                              <option  value="blackboard">BlackBoard</option>
-                                                          </select>
-                                                </div>
-                                                
-                                            <textarea class="codemirror-textarea"></textarea>
-                                    </div>
-                                </li>
-                                
-                                <li data-content="slides">
-                                        <iframe id='slide-frame' src="https://slides.com/abhiyantimilsina/hello-welcome/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                </li>
-                                 <li data-content="files">
+                                        
+                                            <div id="code_result">
+                                                <span id="close_result" style="padding-bottom:30px; color:white; font-weight:bolder;">
+                                                    close<i class="fa fa-times" >
+                                                </i> </span>
+                                                <div id="exec_result"></div>
+                                            </div>
+                                             
+                                                                                                           
+                                        <div class='editor-body' id='code_editor'> 
+                                                <div class="editor-buttons" style="position: relative; bottom: 50px;">	
+                                                        <button id='run-button' class='run-btn btn btn-warning'><i  class="fa fa-play"></i>Run</button>	
+                                                        <button id='save-button' class='btn btn-primary'><i class="fa fa-save"></i>Save</button>
+                                                        <select id="select-language" class="sel-light" selected='scratch' >
+                                                                <option value="javascript">JavaScript</option>
+                                                                <option value="python">Python</option>
+                                                                <option value="php">PHP</option>
+                                                                <option value="python">HTML</option>
+                                                            </select>
+                                                            <select id="select-themes" class="sel-light">
+                                                                  <option value="erlang-dark">Erlang Dark</option>
+                                                                  <option value="icecoder">IceCoder</option>
+                                                                  <option selected='selected' value="rubyblue">RubyBlue</option>
+                                                                  <option value="darcula">Darcula</option>
+                                                                  <option  value="blackboard">BlackBoard</option>
+                                                              </select>
+                                                    </div>
+                                                    
+                                                <textarea class="codemirror-textarea"></textarea>
+                                        </div>
+                                    </li>
                                     
-                                </li>
-                            </ul> 
-                        </div
-            </div>
-        </article>
-        <section class="video-section">
-                <div class="host_button">
-                        <span class="call_all_button" id="start-conferencing">           
-                        <i class="fa fa-video-camera"></i>
-                          Start Live Chat
-                        </span>
-                        <span class="exit_event">
-                          <i class="fa fa-close"></i>
-                          End Event
-                        </span>
+                                    <li data-content="slides">
+                                            <iframe id='slide-frame' src="https://slides.com/abhiyantimilsina/hello-welcome/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </li>
+                                     <li data-content="files">
+                                        
+                                    </li>
+                                </ul> 
+                            </div>
+                </div>
+            </article>
+            <section class="container2">
+    
+                    <section class="video-section">
+                            <div class="host_button">
+                                    <span class="call_all_button" id="start-conferencing">           
+                                    <i class="fa fa-video-camera"></i>
+                                      Start Live Chat
+                                    </span>
+                                    <span class="exit_event">
+                                      <i class="fa fa-close"></i>
+                                      End Event
+                                    </span>
+                                    <input value="{{participant_context.event_detail.name}}" type="hidden" id="conference-name" placeholder="Broadcast Name">
+                                </div>
+                        <div id="video-container"> 
+                        </div>
+                    </section>
+                    <section class="chat">
+                        <div class="page">
+                        <div id="chat-container">
+                                {% include "seminar/macros/chat.html" %}
+                        </div>
+                        </div>
                     </div>
-                    <input value="{{participant_context.event_detail.name}}" type="hidden" id="conference-name" placeholder="Broadcast Name"> 
-            <div id="video-container"> 
-        </div>
-</div>
+                    </section>
+            </section>
         </section>
-        <section class="chat">
-            <div class="page">
-            <div id="chat-container">
-                    {% include "seminar/macros/chat.html" %}
-            </div>
-            </div>
-        </div>
-        </section>
-    </section>
+    </div>
+    
     {% endblock %}
 
 {% block script %}

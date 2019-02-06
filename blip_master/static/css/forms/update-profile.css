@@ -12,9 +12,19 @@ section {
 .row .btn,
 .row .btn:hover{
     background: #1488CC;
+    margin-top: 1.1em;
 }
 
-.row .file-field {
+row .file-field {
     margin-top:4em;
     padding-left: 0.8em; 
+}
+
+.head-size {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.8em;
+    box-shadow: 1px 1px 1px 1px blue;
+    background: #1488CC;
+    color:#fff;
 }

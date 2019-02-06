@@ -5,7 +5,7 @@ Responsive Tabbed Navigation - by CodyHouse.co
 -------------------------------- */
 header {
   position: relative;
-  height: 160px;
+  height: 120px;
   line-height: 180px;
   text-align: center;
 }
@@ -26,7 +26,7 @@ header h1 {
 
 .cd-tabs {
   position: relative;
-  width: 98%;
+  width:99%;
   margin: 0em auto;
 }
 
@@ -109,8 +109,8 @@ header h1 {
 .cd-tabs__navigation a {
   position: relative;
   display: block;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
@@ -421,19 +421,20 @@ input, textarea {
 }
 
 .tab_size {
-  width: 175.4px;
+  width: 220.7px;
+  text-align:center;
 }
 .tab_size a {
-  padding: 0.3em 2em;
+  padding: 0.3em 0.8em;
   overflow: hidden;
 }
 
 .cd-selected{
   background: #2c2d30 !important;
-  height: 90vh;
   padding: 0;
+  height: 84vh;
 }
 
 .cd-tabs__navigation{
-  background: #dcdfe7;
+  background: #661dbb;
 }

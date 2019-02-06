@@ -146,8 +146,8 @@ input:checked + .slider:before {
 }
 .host_button span {
   background-color:skyblue;
-  padding:13px;
-  margin:5px;
+  padding:5px;
+  margin:10px;
   border-radius:20px;
   
 }

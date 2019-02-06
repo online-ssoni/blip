@@ -15,7 +15,16 @@
 
 
 </head>
-
+<style>
+        .head-size {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 0.8em;
+            box-shadow: 1px 1px 1px 1px blue;
+            background: #1488CC;
+            color:#fff;
+        }
+</style>
 <body>
     <header>
         <ul class="nav">
@@ -31,10 +40,9 @@
     <section class="block">
         <div class="row">
 
-            <h2>You have been logged out</h2>
+            <h3 class="head-size">You have been logged out</h3>
             <hr>
-            <a href="{% url 'login' %}">Log In Again</a>            
-            Need an account? <a href="{% url 'register' %}">Sign up Now</a>
+            <a href="{% url 'login' %}" class="waves-effect waves-light btn">Log In Again</a>            
         </div>
     </section>
     <small>

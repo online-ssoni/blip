@@ -15,7 +15,19 @@
 
 
 </head>
-
+<style>
+        .head-size {
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 0.8em;
+            box-shadow: 1px 1px 1px 1px blue;
+            background: #1488CC;
+            color:#fff;
+        }
+        .btn {
+            background: #1488CC;
+        }
+</style>
 <body>
     <header>
         <ul class="nav">
@@ -30,10 +42,10 @@
     </header>
     <section class="block">
         <div class="row">
+                <h3 class="head-size">Join Today</h3>
 
             <form method="POST" class="col s12">
                     {% csrf_token %}
-                    <h3>Join Today</h3>
                     {{ form|crispy }}
                     <br>
                     <button type="submit" class="waves-effect waves-light btn">Sign Up</button>

@@ -16,7 +16,6 @@
     <title>Create Event</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/forms/Nav.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/forms/update-profile.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
          rel = "stylesheet">
@@ -25,6 +24,26 @@
       
 
 </head>
+<style>
+    header .nav .navbar {
+        flex: 15% !important;
+        margin:0em 1em;
+    }
+    .head-size {
+        font-size: 1.5em;
+        font-weight: bold;
+        padding: 0.8em;
+        box-shadow: 1px 1px 1px 1px blue;
+        background: #1488CC;
+        color:#fff;
+    }
+    .navbar ul {
+        width:100%;
+    }
+    .btn {
+        background: #1488CC;
+    }
+</style>
 
 <body>
     <header>
@@ -38,27 +57,16 @@
             </li>
         </ul>
     </header>
-    <section class="block">
-        <div class="row">
-            <h3>Create a new event</h3>
-            <form class="col s12" method="POST">
+    <section class="row justify-content-center">
+        <div class="col-md-4">
+            <h3 class="head-size">Create a new event</h3>
+            <form class="" method="POST">
                     {% csrf_token %}
                     {{ event_form|crispy }}
-                </fieldset>
                     <button type="submit" class="waves-effect waves-light btn">Create event</button>
             </form>
         </div>
-    </section>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{% static 'js/forms/event.js' %}"></script>
-    <!-- <script>
-            $(function() {
-               $( "#id_start_time_date_0" ).datepicker();
-               $( "#id_start_time_date_0" ).datepicker("show");
-            });
-    </script> -->
-    
+    </section>    
 </body>
 
 </html>
