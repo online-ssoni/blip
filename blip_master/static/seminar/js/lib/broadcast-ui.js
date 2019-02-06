@@ -46,13 +46,23 @@
 
         if (typeof roomsList === 'undefined') roomsList = document.body;
 
-        var tr = document.createElement('tr');
-        tr.setAttribute('id', room.broadcaster);
-        tr.innerHTML = '<td>' + room.roomName + '</td>' +
-            '<td><button class="join" id="' + room.roomToken + '">Join Room</button></td>';
-        roomsList.insertBefore(tr, roomsList.firstChild);
+            var tr = document.createElement('div')
+            tr.classList.add('call_button')
+            tr.setAttribute('id', room.broadcaster);
+            tr.innerHTML = `<span class="call_icon join">
+				  <i class="fa fa-video-camera" id="${room.roomToken}"></i></span>`
+            roomsList.append(tr);
 
+            incomingCallAudio.play();
+            handleNewMessage({'username':'blip team', 
+            'message':'The host has started the session Please Join!! :)'
+            })
+            var callInterval = setInterval(()=>{
+                incomingCallAudio.play();
+            },3000)
         tr.onclick = function() {
+            incomingCallAudio.pause()
+            clearInterval(callInterval);
             tr = this;
             captureUserMedia(function() {
                 broadcastUI.joinRoom({
@@ -81,10 +91,7 @@ function captureUserMedia(callback) {
     video.setAttribute('controls', true);
     video.muted = true
     video.controls = false
-    // video.classList.add('self-video')
-    // var host = document.getElementById('self-video')
     
-    // host.appendChild(video);
 
     getUserMedia({
         video: video,

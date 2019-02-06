@@ -1,6 +1,6 @@
 from django.db import models
 from blip_core.models import Event
-
+from django.contrib.auth.models import User
 
 #Models for Seminar App
 class SeminarSession(models.Model):
@@ -11,11 +11,10 @@ class SeminarSession(models.Model):
 
 
 class CodeSnippet(models.Model):
-    LANGUAGE_CHOICES = (('js','JavaScript '),
-     ('php','PHP'),('xml','XML'),('py','Python'))
-    session = models.ForeignKey(Event, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     snippet = models.TextField()
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10)
+    language = models.CharField(max_length=10)
+    extension = models.CharField(max_length=5, default='py')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
 

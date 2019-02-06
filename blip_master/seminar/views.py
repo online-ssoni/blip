@@ -1,11 +1,11 @@
+import requests
+import json
+import random
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.http import Http404
 from seminar.functions import check_host, get_event_attendees
-import requests
-import json
-import random
 from blip_core.models import Profile, Event, EventAttendees
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -13,12 +13,17 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from datetime import datetime
-from seminar.models import SeminarSession
+from seminar.models import SeminarSession, CodeSnippet
 
 #Views for Seminar
-
 clientID = '554726cc60d4d57a2f28a33ad9a521a0'
 clientSecret = 'a09eedfac27ed317c1b80822445a154118aef64e035f11d807c38f7a45c1f0df'
+supported_languages = {
+    'python' : {'api_script_type':'python3', 'extension':'py'},
+    'javascript' : {'api_script_type':'javascript', 'extension':'js'},
+    'php' : {'api_script_type':'php', 'extension':'php'},
+}
+
 
 @login_required
 def join(request, pk):
@@ -31,7 +36,7 @@ def join(request, pk):
 
 
 class Seminar(View):
-    @method_decorator(csrf_exempt)
+    @method_decorator(csrf_exempt, login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(Seminar, self).dispatch(request, *args, **kwargs)
 
@@ -61,19 +66,34 @@ class Seminar(View):
         seminar_session.save()
         return JsonResponse({'status':200}, safe=False)
 
+@login_required
 @csrf_exempt
 def run_program(request):
-    
+    if request.POST.get('language','') not in supported_languages:
+        return JsonResponse({
+            'cpuTime' : None,
+            'output' : f'''Sorry... We donot support  {request.POST.get('language','')} :('''
+        })
     data = {
         'clientId' : clientID,
         'clientSecret' : clientSecret,
         'script' : request.POST.get('script',''),
-        'language' : 'python3',
+        'language' : supported_languages[request.POST.get('language','')]['api_script_type'],
         'versionIndex' : 1,
     };
-    response = requests.post('https://api.jdoodle.com/v1/execute',json=data);
+    try:
+        response = requests.post('https://api.jdoodle.com/v1/execute',json=data)
+        return JsonResponse(response.json(), safe=False)
+    except requests.ConnectionError:
+        return JsonResponse({'cpuTime':None, 'output':'Jdoodle is bisbehaving as I am a free customer :('}, safe=False)
 
-    return JsonResponse(response.json(), safe=False)
-    
 
-
+@login_required
+@csrf_exempt
+def save_file(request):
+    snippet = request.POST.get('snippet','')
+    language = request.POST.get('language','')
+    extension = supported_languages[request.POST.get('language','')]['extension']
+    code_snippet = CodeSnippet.objects.create(user=request.user,snippet=snippet, language=language, extension=extension)
+    code_snippet.save()
+    return JsonResponse({'status':'ok'})

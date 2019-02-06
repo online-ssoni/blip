@@ -7,16 +7,13 @@
 
 /*===================================== Variable Initialization For Code Editor===================================*/
 
-// $('code_editor').hide()
-// $('#loading-spinner').hide()
-
 // Initial editor configuration 
 var language_selector = $('#select-language');
 var theme_selector = $('#select-themes');
 var runButton = $('#run-button');
 var host_editor = $('.host-codemirror-textarea')[0]
 var code = $('.codemirror-textarea')[0];
-
+var saveButton = $('#save-button')
 
 
 // Initial Configuration for the participant code editor
@@ -59,24 +56,20 @@ editor.setSize(580,380);
 /*===================================== Functions for Code Editor ===================================*/
 
 
-function runCode(script) {
+function runCode(script, language='python') {
+    console.log(script);
     requestURL = "/seminar/run/"
-    $.post(requestURL, {'script':script}, (data, status)=>{
+    $.post(requestURL, {'script':script,'language':language}, (data, status)=>{
         $('.editor-body').hide();
         $('#code_result').show();
         $('#loading-spinner').hide();
         result_html = `
-        
-            <hr>     
+         <hr>     
          <div style="color:white; font-weight:bolder; font-size:18px;">
          <p class="output_stats" >CPU TIME: ${data['cpuTime']} </p>
          <p class="output_stats" >Memory: ${data['memory']} </p>
          <p class="output_result" >Output: ${data['output']}   </p>   
-   
-
-         </div>
-
-              `
+        </div>`
         $('#exec_result').html(result_html);
     });
 }
@@ -100,8 +93,10 @@ runButton.click(()=> {
     $('#code_editor').hide();
     $('.editor-body').hide()
     $('#loading-spinner').show();
-    runCode(editor.getValue());
+    runCode(editor.getValue(), editorconfig.mode);
 });
+
+
 
 function broadcastHostChanges(){
     currentEditorConent = editor.getValue()
@@ -167,3 +162,21 @@ setInterval(function(){
   hue++;
   adjustBgCol();
 }, 15);
+
+
+saveButton.click(()=>{
+    $('#code_editor').hide();
+    $('.editor-body').hide()
+    $('#loading-spinner').show();
+ $.post('/seminar/save/', {
+     'language': editorconfig.mode,
+     'snippet' : editor.getValue(),
+ },(data, status)=>{
+    handleNewMessage({'username':'blip team', 
+    'message':'Bravo! The file was saved '
+    })
+    $('#loading-spinner').hide();
+    $('#code_editor').show();
+    $('.editor-body').show();
+    });
+});

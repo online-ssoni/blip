@@ -5,6 +5,8 @@
     {% load static %}
     <script>
     var newMessageAudio = new Audio("{% static "seminar/assets/sounds/chat_alart.wav" %}");
+    var incomingCallAudio = new Audio("{% static "seminar/assets/sounds/call_incoming.mp3" %}");
+    
     </script>
     <script src="{% static "seminar/js/lib/socketio.js" %}"></script>
     <script src="{% static "seminar/js/lib/adapter.js" %}"></script>

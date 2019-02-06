@@ -84,17 +84,18 @@
             </div>
         </article>
         <section class="video-section">
-                <table id='host'  class="visible">
-                        <tr>
-                            <td style="text-align: right;">
-                                <input type="text" id="conference-name" placeholder="Broadcast Name">
-                            </td>
-                            <td>
-                                <button id="start-conferencing">New Broadcast</button>
-                            </td>
-                        </tr>
-                    </table>
-             <div id="video-container">
+                <div class="host_button">
+                        <span class="call_all_button" id="start-conferencing">           
+                        <i class="fa fa-video-camera"></i>
+                          Start Live Chat
+                        </span>
+                        <span class="exit_event">
+                          <i class="fa fa-close"></i>
+                          End Event
+                        </span>
+                    </div>
+                    <input value="{{participant_context.event_detail.name}}" type="hidden" id="conference-name" placeholder="Broadcast Name"> 
+            <div id="video-container"> 
         </div>
 </div>
         </section>
