@@ -107,7 +107,7 @@
   .conversation {
     height: calc(100% - 12px);
     position: relative;
-    background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+    background: #272727;
     z-index: 0;
   }
   
@@ -143,7 +143,7 @@
   /* Messages */
   
   .message {
-    color: #000;
+    color: rgb(230, 230, 230);
     clear: both;
     line-height: 18px;
     font-size: 15px;
@@ -220,7 +220,7 @@
   }
   
   .message.received {
-    background: #fff;
+    background: #5680e9;
     border-radius: 0px 5px 5px 5px;
     float: left;
   }
@@ -237,7 +237,8 @@
   }
   
   .message.sent {
-    background: #e1ffc7;
+    background:lightgreen;
+    color:white;
     border-radius: 5px 0px 5px 5px;
     float: right;
   }

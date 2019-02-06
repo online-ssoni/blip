@@ -49,6 +49,7 @@ async def counter(websocket, path):
            if data['type'] == 'chat':
                CHAT_MESSAGE['session_id'] = data['session_id']
                CHAT_MESSAGE['message'] = data['message']
+               CHAT_MESSAGE['username'] = data['username']
                await broadcast_message()
            elif data['type'] == 'board':
                if data['user_type'] == 'host':

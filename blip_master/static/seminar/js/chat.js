@@ -28,11 +28,12 @@ chatsTab.click(()=>{
 chatForm.submit((event)=>{
     event.preventDefault();
     let newMessageText = decodeURI(chatForm.serialize().split('=')[1]);
-    
+    $(".input-msg").val("");
     let message = {
         'type' : 'chat',
         'message' : newMessageText,
-        'session_id': '1235'
+        'session_id': '1235',
+        'username' : USERNAME
     }
     broadcastMessage(message);
 });
@@ -45,13 +46,25 @@ function notifyUser(){
     }
 }
 
-const handleNewMessage = (peerMessage)=>{
+const handleNewMessage = (peerMessage)=> {
+    var senderName = peerMessage['username'];
     var newMessage = document.createElement('div');
     var msgContainer = document.getElementsByClassName('conversation-container')[0];
+    var nameSpan = document.createElement('span')
+    nameSpan.classList.add('metadata')
+    nameSpan.innerHTML = `<small style="font-size:10px; color:gray;font-style:italic;">${senderName}</small></span>`
+    
+              
     messageText = peerMessage['message'];
+    if(senderName == USERNAME){
+        newMessage.classList.add('sent'); 
+    } else {
+        newMessage.classList.add('received');
+    }
     newMessage.classList.add('message');
-    newMessage.classList.add('received');
+    
     newMessage.innerText = messageText;
+    newMessage.append(nameSpan);
     msgContainer.append(newMessage);
     notifyUser();
 }

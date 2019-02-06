@@ -62,7 +62,7 @@ editor.setSize(580,380);
 function runCode(script) {
     requestURL = "/seminar/run/"
     $.post(requestURL, {'script':script}, (data, status)=>{
-        
+        $('.editor-body').hide();
         $('#code_result').show();
         $('#loading-spinner').hide();
         result_html = `
@@ -98,6 +98,7 @@ language_selector.on('change',function(){
 
 runButton.click(()=> {
     $('#code_editor').hide();
+    $('.editor-body').hide()
     $('#loading-spinner').show();
     runCode(editor.getValue());
 });
@@ -159,7 +160,7 @@ const adjustBgCol = () => {
 $('#close_result').click(()=>{
     $('#code_result').hide();
     $('#code_editor').show();
-   
+   $('.editor-body').show();
 });
 
 setInterval(function(){ 
