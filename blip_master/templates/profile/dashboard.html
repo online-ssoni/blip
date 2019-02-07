@@ -1,15 +1,49 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <title>Blip - Dashboard</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href=" {% static 'css/profile.css' %}">
 
-{% for event in events %}
-<div>
-    <h2>{{event.name}}</h2>
-    <p>{{ event.host }}</p>
-    <p>{{ event.start_time }}</p>
-    <p>{{ event.created_at }}</p>
-    <p>{{ event.active }}</p>
-    <br>
-    <button>Action 1</button>
-    <button>Action 2</button>
-    <button>Action 3</button>
-</div>
-<hr>
-{% endfor %}
+    </head>
+    <body>
+        <header>
+                <ul class="nav">
+                    <li class="logo"><a href="{% url 'blip-home' %}">BLIP</a></li>
+                    <li class="navbar">
+                        <ul>
+                            <li class="btn"><a href="{% url 'blip-home' %}">Home</a></li>
+                            <li class="btn"><a href="{% url 'profile_dashboard' %}">Dashboard</a></li>
+                            <li class="btn"><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+        {% for event in events %}
+            <div class="z-depth-4">
+                <h2>{{event.name}}</h2>
+                <ul class="collapsible">
+                    <li>
+                        <p>{{ event.host }}</p></li>
+                    <p>{{ event.start_time }}</p>
+                    <p>{{ event.created_at }}</p>
+                    <p>{{ event.active }}</p>
+                </ul>
+                <br>
+                <button>Action 1</button>
+                <button>Action 2</button>
+                <button>Action 3</button>
+            </div>
+            <hr>
+        {% endfor %}
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>
