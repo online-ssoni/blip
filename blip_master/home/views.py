@@ -17,7 +17,7 @@ def index(request):
         current_context['event_name'] = event.name 
         current_context['event_description'] = event.description 
         current_context['host'] = event.host.username 
-        current_context['starts_in'] = event.start_time_date
+        current_context['starts_in'] = event.start_time_date.isoformat()
         events_context.append(current_context) 
     context = {'events': events_context}
     return render(request, 'home/index.html', context)
