@@ -1,0 +1,15 @@
+
+{% for event in events %}
+<div>
+    <h2>{{event.name}}</h2>
+    <p>{{ event.host }}</p>
+    <p>{{ event.start_time }}</p>
+    <p>{{ event.created_at }}</p>
+    <p>{{ event.active }}</p>
+    <br>
+    <button>Action 1</button>
+    <button>Action 2</button>
+    <button>Action 3</button>
+</div>
+<hr>
+{% endfor %}

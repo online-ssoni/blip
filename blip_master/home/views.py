@@ -90,3 +90,60 @@ def update_profile(request):
     }
 
     return render(request, 'profile/update_profile.html', context)
+
+@login_required
+def profile_dashboard(request):
+    context = {
+        'events': [
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+            {
+                'name': 'blockchain',
+                'host': 'shubham soni',
+                'start_time': '24-July-3053',
+                'created_at': '15-Aurg-1957',
+                'active': 'Active',
+            },
+        ]
+    }
+    return render(request, 'profile/dashboard.html', context)

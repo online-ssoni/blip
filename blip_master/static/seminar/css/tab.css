@@ -119,8 +119,8 @@ header h1 {
 }
 
 .cd-tabs__navigation a:hover {
-  color: #29324e;
-  background-color: rgba(233, 230, 202, 0.3);
+  color: #000000;
+  background-color: rgb(255, 255, 255);
 }
 
 .cd-tabs__navigation a.cd-selected {
@@ -430,11 +430,11 @@ input, textarea {
 }
 
 .cd-selected{
-  background: #2c2d30 !important;
+  background: #18121e !important;
   padding: 0;
   height: 84vh;
 }
 
 .cd-tabs__navigation{
-  background: #661dbb;
+  background: #18121e;
 }

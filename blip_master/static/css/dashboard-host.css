@@ -25,7 +25,7 @@ a {
 
 .btn {
     border-radius: 24px;
-    background: #1488CC;
+    background: rgb(0, 0, 0);
     border: 1.5px solid #fff;
     color: #fff;
     font-weight: bold;
@@ -36,14 +36,14 @@ a {
 .btn:hover,
 .btn a:hover {
     background: #fff;
-    color: #1488CC;
+    color: rgb(0, 0, 0);
 }
 
 
 /* Navbar style section */
 
 header {
-    background: #1488CC;
+    background: rgb(0, 0, 0);
     width: 100%;
     padding: 1.2em;
 }
@@ -97,7 +97,7 @@ header .nav .navbar {
 }
 .video-section {
     grid-area: video-section;
-    background: blue;
+    background: green;
     width:780px;
     height: 280px;
 }
@@ -109,7 +109,7 @@ header .nav .navbar {
 }
 .extra {
     grid-area: extra-section;
-    background: navy;
+    background: green;
 }
 .extra-content {
     grid-area: content-section;

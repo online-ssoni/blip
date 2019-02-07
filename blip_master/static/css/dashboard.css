@@ -25,7 +25,7 @@ a {
 
 .btn {
     border-radius: 24px;
-    background: #1488CC;
+    background: yellow;
     border: 1.5px solid #fff;
     color: #fff;
     font-weight: bold;
@@ -43,7 +43,7 @@ a {
 /* Navbar style section */
 
 header {
-    background: #1488CC;
+    background: green;
     width: 100%;
     padding: 1.2em;
 }
@@ -92,11 +92,11 @@ header .nav .navbar {
 
 .editor {
     grid-area: editor-section;
-    background: purple;
+    background: rgb(0, 0, 0);
 }
 .video-section {
     grid-area: video-section;
-    background: blue;
+    background: green;
 }
 video {
     width:100%;

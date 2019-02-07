@@ -101,9 +101,8 @@
                                       Start Live Chat
                                     </span>
                                     <span class="exit_event">
-                                      <i class="fa fa-close"></i>
-                                      End Event
-                                    </span>
+                                        <a href="{% url 'events:exit_events' %}"><i class="fa fa-close"></i>Terminate Event</a>
+                                      </span>
                                     <input value="{{participant_context.event_detail.name}}" type="hidden" id="conference-name" placeholder="Broadcast Name">
                                 </div>
                         <div id="video-container"> 

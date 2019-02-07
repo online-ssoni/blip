@@ -99,6 +99,8 @@ class Seminar(View):
             else:
                 return HttpResponse('Forbidden:403')
 
+    
+
     def post(self, request, seminar_token):
         event = Event.objects.get(pk=seminar_token)
         seminar_session = SeminarSession()

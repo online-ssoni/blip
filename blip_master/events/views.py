@@ -64,3 +64,7 @@ def subscribe(request, seminar_token):
     subscription = EventAttendees(event=Event.objects.get(pk=seminar_token),user=request.user)
     subscription.save()
     return redirect(index)
+
+
+def exit_events(request):
+    return redirect(index)

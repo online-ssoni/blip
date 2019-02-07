@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from .views import (index, register, profile, update_profile)
+from .views import (index, register, profile, update_profile, profile_dashboard)
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path('update_profile', update_profile, name='update_profile'),
     path('logout/', auth_views.LogoutView.as_view(template_name='profile/logout.html'), name='logout'),
     path('events/', include('events.urls', namespace='events')),
+    path('profile_dashboard/', profile_dashboard, name='profile_dashboard'),
 ]
 
 if settings.DEBUG:
