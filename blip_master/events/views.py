@@ -38,7 +38,7 @@ def upcoming_events(request):
         current_context['event_name'] = event.name 
         current_context['event_description'] = event.description
         current_context['host'] = event.host.username
-        current_context['starts_in'] = event.start_time_date
+        current_context['starts_in'] = event.start_time_date.isoformat()
         events_context.append(current_context)
     context = {'events': events_context}
     return render(request, 'events/upcoming_events.html', context)
@@ -54,7 +54,7 @@ def events_created(request):
         current_context['event_name'] = event.name 
         current_context['event_description'] = event.description
         current_context['host'] = event.host.username
-        current_context['starts_in'] = event.start_time_date
+        current_context['starts_in'] = event.start_time_date.isoformat()
         events_context.append(current_context)
     context = {'events': events_context}
     return render(request, 'events/events_created.html', context)

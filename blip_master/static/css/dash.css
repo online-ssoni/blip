@@ -1,0 +1,30 @@
+.dash {
+    display:flex;
+    margin:1em 0;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Roboto Mono', monospace;
+    padding: 0.5em;
+}
+.dash h2 {
+    font-size: 2em;
+    flex:1;
+    margin-bottom: 1.2em;
+    margin-left: 0.5em;
+    text-transform: capitalize;
+}
+
+.dash ul {
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly
+}
+
+.dash .btns {
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btn {
+    padding-top: 0;
+}

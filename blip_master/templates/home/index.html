@@ -60,7 +60,7 @@
                                 <p>{{ event.event_description }}</p>
                                 <p><em>Submitted by <a href="#"> {{ event.host }}</a></em></p>
                                 <div class="timer">
-                                    <p>Starts on - <span> {{ event.starts_in }}</span></p>
+                                    <p><span> {{ event.starts_in }}</span></p>
                                 </div>
                             </div>
                             <hr>
@@ -87,6 +87,6 @@
             </div>
         </section>
 </body>
-
+<script src="../../static/js/timer.js"></script>
 </html>
 {% endblock content %}

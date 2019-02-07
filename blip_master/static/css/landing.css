@@ -202,6 +202,12 @@ section {
     border-radius: 14px;
     color: #fff;
 }
+.live {
+    background: tomato;
+    font-weight: bold;
+    font-size: 2em;
+    color: #fff;
+}
 .card-body .extra-content {
     color:rgb(87, 15, 223);
 }

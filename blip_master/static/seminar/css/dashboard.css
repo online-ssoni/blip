@@ -103,10 +103,10 @@ a {
 #video-container {
     display: flex;
     flex-direction: row;
-    flex-basis:90%;
+    flex-basis:84%;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background: #0f053f;
+    background: #211f24;
 }
 video {
     width: 190px;
