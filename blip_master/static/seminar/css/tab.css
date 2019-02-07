@@ -241,7 +241,7 @@ header h1 {
 }
 
 .cd-tabs__content {
-  background: #ffffff;
+  background: #211f24;
 }
 
 .cd-tabs__content li {
@@ -403,7 +403,7 @@ body {
   font-size: 1.6rem;
   font-family: "PT Sans", sans-serif;
   color: #f8f7ee;
-  background-color: #29324e;
+  background-color: #211f24;
 }
 
 a {
@@ -430,11 +430,11 @@ input, textarea {
 }
 
 .cd-selected{
-  background: #18121e !important;
+  background: #211f24 !important;
   padding: 0;
   height: 84vh;
 }
 
 .cd-tabs__navigation{
-  background: #18121e;
+  background: #211f24;
 }
